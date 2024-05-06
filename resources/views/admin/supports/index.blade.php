@@ -4,9 +4,9 @@
 
 <table>
     <thead>
-        <th>assunto</th>
-        <th>status</th>
-        <th>descrição</th>
+        <th>Assunto</th>
+        <th>Status</th>
+        <th>Descrição</th>
     </thead>
     @foreach ($supports as $support)
         <tbody>
