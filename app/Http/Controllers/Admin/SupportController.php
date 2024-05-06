@@ -21,7 +21,11 @@ class SupportController extends Controller
 
     public function index(Request $request)
     {
-        $supports = $this->service->getAll($request->filter);
+        $supports = $this->service->paginate(
+            $request->get('page', 1),
+            $request->get('totalPerPage', 15),
+            $request->filter
+        );
 
         return view('admin.supports.index', compact('supports'));
     }
@@ -31,7 +35,7 @@ class SupportController extends Controller
         return view('admin.supports.create');
     }
 
-    public function store(StoreUpdateSupportRequest $request, Support $support)
+    public function store(StoreUpdateSupportRequest $request)
     {
         $this->service->new(CreateSupportDTO::makeFromRequest($request));
 
